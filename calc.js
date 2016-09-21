@@ -1,3 +1,6 @@
+// LEIGH BRYANT IS DRIVING, JULIA DONALDSON IS TYPING.
+
+
 
 // TODO: DEFINE ANY VARIABLES HERE
 
@@ -19,7 +22,6 @@ function handleButtonClick(buttonValue) {
 
     // TODO: WRITE SOME OF YOUR CODE HERE
 
-}
 
 
 
