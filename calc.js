@@ -4,7 +4,10 @@
 
 // TODO: DEFINE ANY VARIABLES HERE
 
-
+var number = ['1', '2', '3','4','5','6','7','8','9','.'];
+var operator = ['+', '-', '*', '/'];
+var equal = ['='];
+var clear = ['clear'];
 
 // TODO: DEFINE YOUR FUNCTIONS HERE
 
@@ -18,9 +21,20 @@
  *
  * @param  {String} buttonValue   The value of the button that was clicked on, for example "6" or "+"
  */
-function handleButtonClick(buttonValue) {
 
-    // TODO: WRITE SOME OF YOUR CODE HERE
+function handleButtonClick(buttonValue) {
+  updateDisplay(buttonValue);
+
+    if (buttonValue === number) {
+      updateDisplay(buttonValue);
+    }
+
+    if (buttonValue === operator) {
+      updateDisplay('');
+    }
+
+  }
+
 
 
 
