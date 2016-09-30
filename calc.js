@@ -1,8 +1,19 @@
+<<<<<<< HEAD
 // LEIGH BRYANT IS DRIVING, JULIA DONALDSON IS TYPING.
 
 
 
 // TODO: DEFINE ANY VARIABLES HERE
+=======
+// TODO: DEFINE ANY VARIABLES HERE
+var displayText = '';
+
+var runningTotal = 0;
+
+var lastOperator = '';
+
+var lastPressWasOperator = false;
+>>>>>>> 497955cf7dea9018e935cd18852110cc0c06ffdb
 
 var number = ['1', '2', '3','4','5','6','7','8','9','.'];
 var operator = ['+', '-', '*', '/'];
@@ -11,6 +22,33 @@ var clear = ['clear'];
 
 // TODO: DEFINE YOUR FUNCTIONS HERE
 
+function add(num1, num2) {
+    console.log('Add');
+    num1 = parseInt(num1);
+    num2 = parseInt(num2);
+    return num1 + num2;
+}
+
+function divide(num1, num2) {
+    console.log('Divide');
+    num1 = parseInt(num1);
+    num2 = parseInt(num2);
+    return num1 / num2;
+}
+
+function subtract(num1, num2) {
+    console.log('Subtract');
+    num1 = parseInt(num1);
+    num2 = parseInt(num2);
+    return num2 - num1;
+}
+
+function multiply(num1, num2) {
+    console.log('Multiply');
+    num1 = parseInt(num1);
+    num2 = parseInt(num2);
+    return num1 * num2;
+}
 
 
 /**
@@ -35,6 +73,63 @@ function handleButtonClick(buttonValue) {
 
   }
 
+<<<<<<< HEAD
+=======
+    if (buttonValue === 'clear') {
+        displayText = '';
+    } else if (buttonValue === '+' || buttonValue === '/' || buttonValue === 'x' || buttonValue === '-' || buttonValue === '=') {
+
+        switch (buttonValue) {
+            case '+':
+                runningTotal = parseInt(displayText);
+                lastOperator = buttonValue;
+                lastPressWasOperator = true;
+                break;
+
+            case '/':
+                runningTotal = parseInt(displayText);
+                lastOperator = buttonValue;
+                lastPressWasOperator = true;
+                break;
+
+            case 'x':
+                runningTotal = parseInt(displayText);
+                lastOperator = buttonValue;
+                lastPressWasOperator = true;
+                break;
+
+            case '-':
+                runningTotal = parseInt(displayText);
+                lastOperator = buttonValue;
+                lastPressWasOperator = true;
+                break;
+
+            case '=':
+                if (lastOperator === '+') {
+                    displayText = add(runningTotal, displayText);
+                } else if (lastOperator === '-') {
+                    displayText = subtract(runningTotal, displayText);
+                } else if (lastOperator === 'x') {
+                    displayText = multiply(runningTotal, displayText);
+                } else if (lastOperator === '/') {
+                    displayText = divide(runningTotal, displayText);
+                }
+                runningTotal = displayText;
+                break;
+        }
+    } else {
+        if (lastPressWasOperator === true) {
+            displayText = buttonValue;
+            lastPressWasOperator = false;
+        }
+         else {
+            displayText += buttonValue;
+        }
+    }
+
+
+    updateDisplay(displayText);
+>>>>>>> 497955cf7dea9018e935cd18852110cc0c06ffdb
 
 
 
@@ -123,7 +218,7 @@ document.querySelector('.run-tests').addEventListener('click', function() {
         console.log('All tests have run. (If you see no errors, they all passed!)');
         updateDisplay('');
 
-    } catch(e) {
+    } catch (e) {
         console.error('There was a syntax error during the test run:', e);
     }
 });
@@ -143,6 +238,7 @@ document.querySelector('.run-tests').addEventListener('click', function() {
 });
 
 var display = document.querySelector('.display figure');
+
 function updateDisplay(text) {
     display.innerText = text;
 }
