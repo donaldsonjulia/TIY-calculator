@@ -1,10 +1,3 @@
-<<<<<<< HEAD
-// LEIGH BRYANT IS DRIVING, JULIA DONALDSON IS TYPING.
-
-
-
-// TODO: DEFINE ANY VARIABLES HERE
-=======
 // TODO: DEFINE ANY VARIABLES HERE
 var displayText = '';
 
@@ -13,12 +6,7 @@ var runningTotal = 0;
 var lastOperator = '';
 
 var lastPressWasOperator = false;
->>>>>>> 497955cf7dea9018e935cd18852110cc0c06ffdb
 
-var number = ['1', '2', '3','4','5','6','7','8','9','.'];
-var operator = ['+', '-', '*', '/'];
-var equal = ['='];
-var clear = ['clear'];
 
 // TODO: DEFINE YOUR FUNCTIONS HERE
 
@@ -59,22 +47,8 @@ function multiply(num1, num2) {
  *
  * @param  {String} buttonValue   The value of the button that was clicked on, for example "6" or "+"
  */
-
 function handleButtonClick(buttonValue) {
-  updateDisplay(buttonValue);
 
-    if (buttonValue === number) {
-      updateDisplay(buttonValue);
-    }
-
-    if (buttonValue === operator) {
-      updateDisplay('');
-    }
-
-  }
-
-<<<<<<< HEAD
-=======
     if (buttonValue === 'clear') {
         displayText = '';
     } else if (buttonValue === '+' || buttonValue === '/' || buttonValue === 'x' || buttonValue === '-' || buttonValue === '=') {
@@ -129,8 +103,8 @@ function handleButtonClick(buttonValue) {
 
 
     updateDisplay(displayText);
->>>>>>> 497955cf7dea9018e935cd18852110cc0c06ffdb
 
+}
 
 
 
