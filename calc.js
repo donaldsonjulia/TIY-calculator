@@ -9,7 +9,6 @@ var lastPressWasOperator = false;
 
 var lastPressWasDecimal = false;
 
-var calculationStarted = false;
 
 
 // TODO: DEFINE YOUR FUNCTIONS HERE
@@ -32,7 +31,7 @@ function subtract(num1, num2) {
     console.log('Subtract');
     num1 = parseFloat(num1);
     num2 = parseFloat(num2);
-    return num1 - num2;
+    return num2 - num1;
 }
 
 function multiply(num1, num2) {
@@ -83,7 +82,7 @@ function handleButtonClick(buttonValue) {
                 if (lastOperator === '+') {
                     displayText = add(runningTotal, displayText);
                 } else if (lastOperator === '-') {
-                    displayText = subtract(runningTotal, displayText);
+                    displayText = subtract(displayText, runningTotal);
                 } else if (lastOperator === 'x') {
                     displayText = multiply(runningTotal, displayText);
                 } else if (lastOperator === '/') {
