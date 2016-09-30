@@ -1,10 +1,37 @@
 
 // TODO: DEFINE ANY VARIABLES HERE
+var displayText = '';
 
+var runningTotal = 0;
+
+var lastOperator = '';
+
+var lastPressWasOperator = false;
 
 
 // TODO: DEFINE YOUR FUNCTIONS HERE
 
+function add(num1, num2) {
+  console.log('Add');
+  num1 = parseInt(num1);
+  num2 = parseInt(num2);
+  return num1 + num2;
+}
+
+function divide(num1, num2) {
+  console.log('Divide');
+}
+
+function subtract(num1, num2) {
+  console.log('Subtract');
+  num1 = parseInt(num1);
+  num2 = parseInt(num2);
+  return num1 - num2;
+}
+
+function multiply(num1, num2) {
+  console.log('Multiply');
+}
 
 
 /**
@@ -17,7 +44,68 @@
  */
 function handleButtonClick(buttonValue) {
 
-    // TODO: WRITE SOME OF YOUR CODE HERE
+if (buttonValue === 'clear') {
+  displayText = '';
+} else if (buttonValue === '+' || buttonValue === '/' || buttonValue === 'x' || buttonValue === '-' || buttonValue === '=') {
+
+  switch(buttonValue) {
+    case '+':
+     runningTotal += parseInt(displayText);
+     lastOperator = buttonValue;
+     lastPressWasOperator = true;
+     console.log(runningTotal);
+      // add();
+    break;
+
+    case '/':
+      divide();
+    break;
+
+    case 'x':
+      multiply();
+    break;
+
+    case '-':
+      runningTotal = parseInt(displayText);
+      lastOperator = buttonValue;
+      lastPressWasOperator = true;
+      console.log(runningTotal);
+      // subtract();
+    break;
+
+    case '=':
+    if (lastOperator === '+') {
+      displayText = add(runningTotal, displayText);
+    }
+    else if (lastOperator === '-') {
+      displayText = subtract(runningTotal, displayText);
+    }
+    runningTotal = displayText;
+    break;
+  }
+
+
+}
+
+else {
+  if (lastPressWasOperator === true) {
+    displayText = buttonValue;
+    lastPressWasOperator = false;
+
+  } else {
+    displayText += buttonValue;
+  }
+
+}
+
+
+
+  updateDisplay(displayText);
+
+
+
+
+
 
 }
 
