@@ -7,34 +7,38 @@ var lastOperator = '';
 
 var lastPressWasOperator = false;
 
+var lastPressWasDecimal = false;
+
+var calculationStarted = false;
+
 
 // TODO: DEFINE YOUR FUNCTIONS HERE
 
 function add(num1, num2) {
     console.log('Add');
-    num1 = parseInt(num1);
-    num2 = parseInt(num2);
+    num1 = parseFloat(num1);
+    num2 = parseFloat(num2);
     return num1 + num2;
 }
 
 function divide(num1, num2) {
     console.log('Divide');
-    num1 = parseInt(num1);
-    num2 = parseInt(num2);
+    num1 = parseFloat(num1);
+    num2 = parseFloat(num2);
     return num1 / num2;
 }
 
 function subtract(num1, num2) {
     console.log('Subtract');
-    num1 = parseInt(num1);
-    num2 = parseInt(num2);
-    return num2 - num1;
+    num1 = parseFloat(num1);
+    num2 = parseFloat(num2);
+    return num1 - num2;
 }
 
 function multiply(num1, num2) {
     console.log('Multiply');
-    num1 = parseInt(num1);
-    num2 = parseInt(num2);
+    num1 = parseFloat(num1);
+    num2 = parseFloat(num2);
     return num1 * num2;
 }
 
@@ -51,32 +55,29 @@ function handleButtonClick(buttonValue) {
 
     if (buttonValue === 'clear') {
         displayText = '';
-    } else if (buttonValue === '+' || buttonValue === '/' || buttonValue === 'x' || buttonValue === '-' || buttonValue === '=') {
+        runningTotal = 0;
+    }
+    else if (buttonValue === '+' || buttonValue === '/' || buttonValue === 'x' || buttonValue === '-' || buttonValue === '=') {
 
         switch (buttonValue) {
             case '+':
-                runningTotal = parseInt(displayText);
-                lastOperator = buttonValue;
-                lastPressWasOperator = true;
-                break;
-
             case '/':
-                runningTotal = parseInt(displayText);
-                lastOperator = buttonValue;
-                lastPressWasOperator = true;
-                break;
-
             case 'x':
-                runningTotal = parseInt(displayText);
+                runningTotal = parseFloat(displayText);
                 lastOperator = buttonValue;
                 lastPressWasOperator = true;
-                break;
+            break;
 
             case '-':
-                runningTotal = parseInt(displayText);
-                lastOperator = buttonValue;
-                lastPressWasOperator = true;
-                break;
+                  lastOperator = buttonValue;
+                    if (displayText === '') {
+                      displayText = buttonValue;
+                      lastPressWasOperator = false;
+                    } else {
+                      lastPressWasOperator = true;
+                      runningTotal = parseFloat(displayText);
+                    }
+            break;
 
             case '=':
                 if (lastOperator === '+') {
@@ -88,22 +89,29 @@ function handleButtonClick(buttonValue) {
                 } else if (lastOperator === '/') {
                     displayText = divide(runningTotal, displayText);
                 }
-                runningTotal = displayText;
+                runningTotal = parseFloat(displayText);
                 break;
         }
     } else {
         if (lastPressWasOperator === true) {
             displayText = buttonValue;
             lastPressWasOperator = false;
+            lastPressWasDecimal = false;
         }
-         else {
-            displayText += buttonValue;
+        else if (buttonValue === '.' && lastPressWasDecimal === false) {
+          displayText += buttonValue;
+          lastPressWasDecimal = true;
         }
-    }
+        else if (buttonValue === '.' && lastPressWasDecimal === true) {
+          displayText = displayText;
+        } else {
+              displayText += buttonValue;
+              lastPressWasDecimal = false;
+            }
+        }
 
 
     updateDisplay(displayText);
-
 }
 
 
