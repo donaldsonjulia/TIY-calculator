@@ -68,8 +68,22 @@ function handleButtonClick(buttonValue) {
                 lastOperator = buttonValue;
                 lastPressWasOperator = true;
             break;
+
             case '/':
+              if (lastOperator === '/' && runningTotal !== 0) {
+                  displayText = divide(runningTotal, displayText);
+                  runningTotal = displayText;
+              }
+              runningTotal = parseFloat(displayText);
+              lastOperator = buttonValue;
+              lastPressWasOperator = true;
+            break;
+
             case 'x':
+              if (lastOperator === 'x' && runningTotal !== 0) {
+                  displayText = multiply(runningTotal, displayText);
+                  runningTotal = displayText;
+              }
                 runningTotal = parseFloat(displayText);
                 lastOperator = buttonValue;
                 lastPressWasOperator = true;
@@ -81,6 +95,10 @@ function handleButtonClick(buttonValue) {
                       displayText = buttonValue;
                       lastPressWasOperator = false;
                     } else {
+                      if (lastOperator === '-' && runningTotal !== 0) {
+                          displayText = subtract(displayText, runningTotal);
+                          runningTotal = displayText;
+                      }
                       lastPressWasOperator = true;
                       runningTotal = parseFloat(displayText);
                     }
