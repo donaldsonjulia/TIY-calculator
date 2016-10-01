@@ -60,6 +60,14 @@ function handleButtonClick(buttonValue) {
 
         switch (buttonValue) {
             case '+':
+              if (lastOperator === '+' && runningTotal !== 0) {
+                  displayText = add(runningTotal, displayText);
+                  runningTotal = displayText;
+                }
+                runningTotal = parseFloat(displayText);
+                lastOperator = buttonValue;
+                lastPressWasOperator = true;
+            break;
             case '/':
             case 'x':
                 runningTotal = parseFloat(displayText);
@@ -88,7 +96,8 @@ function handleButtonClick(buttonValue) {
                 } else if (lastOperator === '/') {
                     displayText = divide(runningTotal, displayText);
                 }
-                runningTotal = parseFloat(displayText);
+                runningTotal = 0;
+
                 break;
         }
     } else {
